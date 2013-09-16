@@ -1,0 +1,14 @@
+{
+  "name": "backbone-experiments",
+  "description": "a couple experiments with backboneJS",
+  "version": "0.0.1",
+  "author": {
+    "name": "Willian Carvalho",
+    "email": "o.chambs@gmail.com"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib": "~0.7.0",
+    "grunt-contrib-watch": "~0.5.3"
+  }
+}
