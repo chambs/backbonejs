@@ -15,10 +15,8 @@ requirejs.config({
 });
 
 
-requirejs(['test1'], function(test1) {
+requirejs(['test1', 'test2'], function(test1, test2) {
 
-	setTimeout(function() {
-		test1.trigger('alert', 'WWow it works !!!');
-	}, 2000);
+
 
 });
