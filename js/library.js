@@ -1,0 +1,14 @@
+define(['jquery', 'backbone', 'book'], function($, Backbone, Book) {
+
+	var Library = Backbone.Collection.extend({
+		model: Book,
+
+		initialize: function() {
+			
+		}
+	});
+
+
+	return Library;
+
+});

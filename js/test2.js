@@ -1,4 +1,4 @@
-define(['jquery', 'backbone'], function($, Backbone) {
+define(['jquery', 'backbone', 'library'], function($, Backbone, Library) {
 
 	var buttonName = Backbone.Model.extend({
 		initialize: function() {
@@ -20,5 +20,22 @@ define(['jquery', 'backbone'], function($, Backbone) {
 	$(document).on('keyup', '#txt-btn-name', function(ev) {
 		btnName.set({text: this.value});
 	});
+
+
+	var lib1 = new Library();
+
+	lib1.on('change', function(model, x) {
+		console.log('mudou', model, x);
+	});
+
+	lib1.on('add', function(model, x) {
+		$('#books').append("<li data-id='" + model.get('id') + "'>" + model.get('title') + "</li>");
+	});
+
+	lib1.on('remove', function(model, x) {
+		$('[data-id="' + model.get('id') + '"]', '#books').remove();
+	});
+
+	window.lib1 = lib1;	
 
 });
