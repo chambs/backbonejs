@@ -36,6 +36,25 @@ define(['jquery', 'backbone', 'library'], function($, Backbone, Library) {
 		$('[data-id="' + model.get('id') + '"]', '#books').remove();
 	});
 
+	var Content = Backbone.View.extend({
+		el: $('#content'),
+		collection: lib1,
+
+		render: function() {
+
+		},
+
+		events: {
+			'click li': 'clickLi'
+		},
+
+		clickLi: function(a, b, c) {
+			this.collection.add({id: 2, title: 'frozô'});
+			console.log(a, b, c);
+		}
+	});
+
+	window.content = new Content();
 	window.lib1 = lib1;	
 
 });
