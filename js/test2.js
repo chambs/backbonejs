@@ -1,4 +1,4 @@
-define(['jquery', 'backbone', 'library'], function($, Backbone, Library) {
+define(['jquery', 'backbone', 'library', 'book'], function($, Backbone, Library, Book) {
 
 	var buttonName = Backbone.Model.extend({
 		initialize: function() {
@@ -24,19 +24,29 @@ define(['jquery', 'backbone', 'library'], function($, Backbone, Library) {
 
 	var lib1 = new Library();
 
-	lib1.on('change', function(model, x) {
-		console.log('mudou', model, x);
-	});
 
-	lib1.on('add', function(model, x) {
-		$('#books').append("<li data-id='" + model.get('id') + "'>" + model.get('title') + "</li>");
-	});
-
-	lib1.on('remove', function(model, x) {
-		$('[data-id="' + model.get('id') + '"]', '#books').remove();
+	var book = new Book({
+		id: 555,
+		title: 'LIVRO $$$'
 	});
 
 	var Content = Backbone.View.extend({
+
+		initialize: function() {
+			this.listenTo(this.collection, 'add', function(model) {
+				$('#books').append("<li data-id='" + model.get('id') + "'>" + model.get('title') + "</li>");
+			});
+			
+			this.listenTo(this.collection, 'change', function(model) {
+				$("[data-id='" + model.get('id') + "']").html(model.get('title'));
+			});
+			
+			this.listenTo(this.collection, 'remove', function(model) {
+				$('[data-id="' + model.get('id') + '"]', '#books').remove();
+			});
+			
+		},
+
 		el: $('#content'),
 		collection: lib1,
 
@@ -50,11 +60,11 @@ define(['jquery', 'backbone', 'library'], function($, Backbone, Library) {
 
 		clickLi: function(a, b, c) {
 			this.collection.add({id: 2, title: 'frozô'});
-			console.log(a, b, c);
 		}
 	});
 
 	window.content = new Content();
 	window.lib1 = lib1;	
+	window.book = book;
 
 });
