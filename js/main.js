@@ -15,8 +15,39 @@ requirejs.config({
 });
 
 
-requirejs(['test1', 'test2'], function(test1, test2) {
+requirejs(['test1', 'test2', 'backbone'], function(test1, test2, Backbone) {
+
+	var routeTest = Backbone.Router.extend({
+
+
+		routes: {
+			'lero/:p': 'leroFunc',
+			'about': 'aboutFunc',
+			'': 'defaultFunc'
+		},
+
+		defaultFunc: function() {
+			$('#content').empty();
+		},
+
+		leroFunc: function(p) {
+			$('#content').html('this is lero page. welcome! ' + p);
+		},
+
+		aboutFunc: function() {
+			$('#content').html('ABOUT US');
+		}
+	});
+
+	var rt = new routeTest();
+
+	rt.routes['rucula/:id'] = 'ruculaFunc';
+
+	rt.ruculaFunc = function(id) {
+		$('#content').html('RUCULA x ' + id);
+	}
 
 
 
+	Backbone.history.start();
 });

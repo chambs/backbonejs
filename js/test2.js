@@ -63,6 +63,28 @@ define(['jquery', 'backbone', 'library', 'book'], function($, Backbone, Library,
 		}
 	});
 
+	var lis = Backbone.View.extend({
+		tagName: 'li',
+
+		events: {
+			'click .lero': 'lero'
+		},
+
+		lero: function(a,b) {
+			console.log(a, b);
+		}
+	});
+
+	console.log(111);
+
+
+	aaa = new lis({
+		id: 'lero'
+	});
+
+
+	console.log( aaa.el );
+
 	window.content = new Content();
 	window.lib1 = lib1;	
 	window.book = book;
