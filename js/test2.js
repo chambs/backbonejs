@@ -75,15 +75,9 @@ define(['jquery', 'backbone', 'library', 'book'], function($, Backbone, Library,
 		}
 	});
 
-	console.log(111);
-
-
 	aaa = new lis({
 		id: 'lero'
 	});
-
-
-	console.log( aaa.el );
 
 	window.content = new Content();
 	window.lib1 = lib1;	

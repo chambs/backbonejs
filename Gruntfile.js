@@ -4,7 +4,11 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		watch: {
 			
-		}
+		},
+
+        copy: {
+            
+        }
 	});
 
 

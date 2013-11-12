@@ -5,6 +5,14 @@ requirejs.config({
 		'backbone': {
 			deps: ['underscore', 'jquery'],
 			exports: 'Backbone'
+		},
+
+		'mustache': {
+			exports: 'Mustache'
+		},
+
+		'underscore': {
+			exports: '_'
 		}
 	},
 	paths: {
@@ -15,7 +23,7 @@ requirejs.config({
 });
 
 
-requirejs(['test1', 'test2', 'backbone'], function(test1, test2, Backbone) {
+requirejs(['test1', 'test2', 'backbone', 'test3'], function(test1, test2, Backbone, test3) {
 
 	var routeTest = Backbone.Router.extend({
 
